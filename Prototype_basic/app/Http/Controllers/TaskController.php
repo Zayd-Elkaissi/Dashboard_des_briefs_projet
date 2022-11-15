@@ -24,7 +24,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -35,10 +35,15 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-          Task::create([
+        $task = Task::create([
             'name' => $request->taskName
+        ])->save();
 
-         ])->save();
+        if($task){
+            return response()->json(["status" => "Successful Create"]);
+          }else{
+            return response()->json(["status" => "error"]);
+          }
     }
 
     /**
@@ -72,9 +77,17 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $task = Task::find($id);
-        $task->name = $request->taskName;
-        $task->save();
+       $task = Task::find($id);
+       $task->name = $request->taskName;
+       $task->save();
+
+       if($task){
+        return response()->json(["status" => "Successful Update"]);
+      }else{
+        return response()->json(["status" => "error"]);
+      }
+
+
     }
 
     /**
@@ -87,6 +100,13 @@ class TaskController extends Controller
     {
         $task = Task::find($id);
         $task->delete();
+
+        if($task){
+            return response()->json(["status" => "Successful Delete"]);
+          }else{
+            return response()->json(["status" => "error"]);
+          }
+        
 
     }
 }
