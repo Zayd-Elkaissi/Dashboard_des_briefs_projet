@@ -7,15 +7,26 @@ export class Task extends Component {
         taskName:"",
         data:[]
     }
-    componentDidMount(){
-         
-        axios.get("http://127.0.0.1:8000/api/task")
-        .then(response=>{
-            this.setState({
-                data:response.data
-            })
-        })
-    }
+    // async componentDidMount(){
+    //    await axios.get("http://127.0.0.1:8000/api/task")
+    //     .then(response=>{
+    //         this.setState({
+    //             data:response.data
+    //         })
+    //     })
+    // }
+
+
+    async componentDidMount(){
+        await axios.get("http://127.0.0.1:8000/api/task")  
+        .then(res=>
+          // console.log(res.data)
+          this.setState({
+              data:res.data
+          })
+              )
+      }
+
 
     handleChange=(e)=>{
             console.log(e.target.value)
@@ -29,15 +40,23 @@ export class Task extends Component {
         axios.post("http://127.0.0.1:8000/api/store",this.state)
           .then(
             window.location.reload()
+          
           )
     }
 
-    handleDelete= (id)=>{
+    // await axios.delete("http://127.0.0.1:8000/api/task/"+id)
+    // .then(res=>{
+    //     alert('Data has been delete')
+    //     window.location.reload()
+    // }
+
+    handleDelete= async(id)=>{
         
         console.log(id)
-                 axios.delete("http://127.0.0.1:8000/api/destroy/"+id)
-                 .then(
+        await axios.delete("http://127.0.0.1:8000/api/destroy/"+id)
+                 .then(res=>{
             window.location.reload()
+                  }
         )
 
       } 
