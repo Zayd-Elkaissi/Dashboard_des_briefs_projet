@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-export class Task extends Component {
+ class Task extends React.Component {
 
     state={
         id:'',  
@@ -108,4 +108,5 @@ export class Task extends Component {
             </div>
         );
     }
-}
+ }
+ export default Task;
