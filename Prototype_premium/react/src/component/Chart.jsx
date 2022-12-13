@@ -7,16 +7,18 @@ import { Chart as ChartJs } from "chart.js/auto";
         console.log(this.props.Data)
         return(
             <div style={{width:700}}>
-            <Bar   data={{
+            <Bar  
+            data={{
                   labels:this.props.Data.map((value)=>value.name),
 
                   datasets:[{
                       label:'dure de tache par /h',
                       data:[12,40,30,60], 
-                      backgroundColor:['red'],
+                      backgroundColor:['orange'],
                       indexAxis:'y'
                   }]
-            }}/>
+            }}
+            />
         </div>
 
         )
