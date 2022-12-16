@@ -18,10 +18,10 @@ class Task extends Component {
                             {this.props.data.map((value)=>(
                             <tr key={value.id}>
                                 <td>{value.name}</td>
-                                <td> <button className='btn btn-outline-danger' onClick={()=>this.props.remove(value.id)}>Delete</button>
-
+                                <td> 
+                                {/* <button onClick={}></button> */}
+                                <button className='btn btn-outline-danger' onClick={()=>this.props.remove(value.id)}>Delete</button>
                                 <button className='btn btn-outline-success ms-3' onClick={()=> this.props.edit(value.id)}>Edit</button>
-                                
                                 </td>
                                </tr>
                                ))}

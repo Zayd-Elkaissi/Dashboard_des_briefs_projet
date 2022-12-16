@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import Task from './Task';
 
-
 export default class TaskManager extends Component {
     constructor(props) {
         super(props);
@@ -38,7 +37,7 @@ export default class TaskManager extends Component {
         await axios.post("http://127.0.0.1:8000/api/task",this.state)
          .then(res=>{
             this.component();
-            this.state.taskName= ''
+            // this.state.taskName= ''
 
          })
      };
